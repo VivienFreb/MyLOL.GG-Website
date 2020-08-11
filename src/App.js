@@ -3,12 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 
 import ApiRequest from "./ApiRequest";
+import SummonerForm from "./SummonerForm";
 
 
 function App() {
   return (
     <div className="App">
-     <ApiRequest/>
+     <SummonerForm/>
     </div>
   );
 }
