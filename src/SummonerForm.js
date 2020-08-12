@@ -15,7 +15,10 @@ const REGIONS = [
 class SummonerForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {summoner: '', region: 'EUW1'};
+        this.state = {
+            summoner: '',
+            region: 'EUW1'
+        };
     }
 
     handleChange = (event) => {
@@ -30,6 +33,12 @@ class SummonerForm extends Component {
             console.log("Good!")
         }
     };
+
+    persistSummoner = (event) => {
+        event.preventDefault();
+        const newSummoner = {summoner: this.props.summoner, region: this.props.region};
+
+    }
 
     render() {
         return (

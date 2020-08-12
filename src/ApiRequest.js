@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
+const API_KEY = process.env.REACT_APP_RIOT_API_KEY;
+
+
 class ApiRequest extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -12,7 +16,8 @@ class ApiRequest extends Component {
     }
 
     componentDidMount() {
-        fetch("https://jsonplaceholder.typicode.com/posts")
+
+        fetch("https://cors-anywhere.herokuapp.com/https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TooFat4You?api_key=" + API_KEY)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -43,12 +48,12 @@ class ApiRequest extends Component {
         } else {
             return (
                 <ul>
-                    {items.map(item => (
-                        <li key={item.id}>
-                            {item.userId} {item.title}
-                            <p>{item.body}</p>
-                        </li>
-                    ))}
+                    <p>User : {items.id}</p>
+                    <p>Account Id : {items.accountId}</p>
+                    <p>puuid : {items.puuid}</p>
+                    <p>Nme : {items.name}</p>
+                    <img src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + items.profileIconId + ".png"}/>
+                    <p>Level : {items.summonerLevel}</p>
                 </ul>
             );
         }
