@@ -10,7 +10,7 @@ const REGIONS = [
     {region:'OC', val: "OC1"},
     {region:'RU', val: "RU"},
     {region:'TR', val: "TR1"}
-    ];
+];
 
 class SummonerForm extends Component {
     constructor(props) {
@@ -18,35 +18,46 @@ class SummonerForm extends Component {
         this.state = {summoner: '', region: 'EUW1'};
     }
 
-    handleSummonerChange = (event) => {
-        this.setState({summoner: event.target.value});
-    };
-    handleRegionChange = (event) => {
-        this.setState({region: event.target.value});
+    handleChange = (event) => {
+        this.setState({[event.target.id]: event.target.value});
     };
 
     handleSubmit = (event) => {
-        alert('https://' + this.state.region.toLowerCase() +'.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.state.summoner);
         event.preventDefault();
+        console.log('https://' + this.state.region.toLowerCase() +'.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.state.summoner);
+        event.target.className += " was-validated";
+        if(event.target.checkValidity()){
+            console.log("Good!")
+        }
     };
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Nom d'invocateur :
-                    <input type="text" value={this.state.summoner} onChange={this.handleSummonerChange} />
-                </label>
-                <label>
-                    Région
-                    <div className="custom-select">
-                        <select onChange={this.handleRegionChange}>
-                            {REGIONS.map(({region, val}) => (
-                                <option key={region} value={val}>{region}</option>
-                            ))}
-                        </select>
+            <form className="needs-validation" noValidate onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                    <label>Summoner Name</label>
+                    <input
+                        className="form-control"
+                        id="summoner"
+                        type="text"
+                        onChange={this.handleChange}
+                        placeholder="Enter your Summoner Name"
+                        required
+                        minLength="3"
+                        maxLength="16"
+                        value={this.state.summoner}
+                    />
+                    <div className="invalid-feedback">
+                        Summoner is required with minimum length of 3 and max of 16
                     </div>
-                </label>
+                </div>
+                <div className="form-group">
+                    <select className="custom-select" onChange={this.handleChange}>
+                        {REGIONS.map(({region, val}) => (
+                            <option key={region} value={val}>{region}</option>
+                        ))}
+                    </select>
+                </div>
                 <input type="submit" value="Envoyer" />
             </form>
         );

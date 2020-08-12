@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,12 +6,16 @@ import ApiRequest from "./ApiRequest";
 import SummonerForm from "./SummonerForm";
 
 
-function App() {
-  return (
-    <div className="App">
-     <SummonerForm/>
-    </div>
-  );
+class App extends Component {
+  render() {
+
+
+      return (
+      <div className="App">
+          <SummonerForm/>
+      </div>
+      );
+  }
 }
 
 export default App;
