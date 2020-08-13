@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+
 import SummonerPage from "./SummonerPage";
 
-const CORS = "https://cors-anywhere.herokuapp.com/";
+const CORS = "https://cors-anywhere.herokuapp.com/https://";
+const SUMMONER_QUERY = ".api.riotgames.com/lol/summoner/v4/summoners/by-name/";
+const MASTERY_QUERY = ".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
+const CHAMP_QUERY = "http://ddragon.leagueoflegends.com/cdn/10.16.1/data/en_US/champion.json";
 const API_KEY = "?api_key=" + process.env.REACT_APP_RIOT_API_KEY;
 
 
@@ -19,13 +23,14 @@ class ApiRequest extends Component {
 
     componentDidMount() {
         const datas = [];
-        axios.get(CORS + this.props.apiCall + API_KEY)
-        // axios.get(`https://jsonplaceholder.typicode.com/users`)
+        var summonerId = '';
+        axios.get(CORS + this.props.region + SUMMONER_QUERY + this.props.summoner + API_KEY)
+        //
             .then(
                 (res) => {
+                    summonerId = res.data.id;
                     datas.push(res.data);
                     this.setState({
-                        isLoaded: true,
                         results: datas
                     });
                 },
@@ -35,6 +40,23 @@ class ApiRequest extends Component {
                         error
                     });
                 })
+            .then(() => axios.get(CORS + this.props.region + MASTERY_QUERY + summonerId + API_KEY)
+                .then(
+                    (res) => {
+                        datas.push(res.data)
+                        this.setState({
+                            results: datas
+                        });
+                    }))
+            .then(() => axios.get(CHAMP_QUERY)
+                .then(
+                    (res) => {
+                        datas.push(res.data.data)
+                        this.setState({
+                            isLoaded: true,
+                            results: datas
+                        });
+                    }))
     }
 
 
@@ -46,7 +68,7 @@ render() {
         return <div>Loading...</div>;
     } else {
         return (
-            <SummonerPage summoner={results}/>
+            <SummonerPage res={results}/>
         );
     }
 }

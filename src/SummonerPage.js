@@ -4,6 +4,14 @@ import React, {Component} from 'react'
 import './SummonerPage.css'
 
 class  SummonerPage extends Component{
+    state = {
+        datas : {
+            summoner: this.props.res[0],
+            mastery: this.props.res[1],
+            champions: this.props.res[2]
+        }
+    }
+
 
     levelBorder(level){
         level = parseInt(level);
@@ -11,11 +19,11 @@ class  SummonerPage extends Component{
             return "https://vignette.wikia.nocookie.net/leagueoflegends/images/8/86/Level_1_Summoner_Icon_Border.png/revision/latest?cb=20180324105818";
         }else if(level >= 30 && level < 50){
             return "https://vignette.wikia.nocookie.net/leagueoflegends/images/4/40/Level_30_Summoner_Icon_Border.png/revision/latest?cb=20180324105839";
-        }else if (level >= 50 && level < 30){
+        }else if (level >= 50 && level < 75){
             return "https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c0/Level_50_Summoner_Icon_Border.png/revision/latest?cb=20180324105839";
-        }else if (level >= 75 && level < 50){
+        }else if (level >= 75 && level < 100){
             return "https://vignette.wikia.nocookie.net/leagueoflegends/images/d/d7/Level_75_Summoner_Icon_Border.png/revision/latest?cb=20180324105840";
-        }else if (level >= 100 && level < 75){
+        }else if (level >= 100 && level < 125){
             return "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/99/Level_100_Summoner_Icon_Border.png/revision/latest?cb=20180324105841";
         }else if (level >= 125 && level < 150){
             return "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/eb/Level_125_Summoner_Icon_Border.png/revision/latest?cb=20180324105841";
@@ -41,6 +49,9 @@ class  SummonerPage extends Component{
 
 
     render(){
+        const { datas } = this.state;
+        console.log(datas)
+        console.log("aaaaaaa")
         return(
             <div>
                 {/*<ul>*/}
@@ -49,12 +60,40 @@ class  SummonerPage extends Component{
                 {/*    <p>puuid : {this.props.summoner.puuid}</p>*/}
                 {/*    <p>Nme : {this.props.summoner.name}</p>*/}
                 {/*</ul>*/}
-                <p className="summonerName">{this.props.summoner[0].name}</p>
+                <p className="summonerName">{datas.summoner.name}</p>
                 <div className="iconContainer">
-                    <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + this.props.summoner[0].profileIconId + ".png"}/>
-                    <img className="levelBorder" src={this.levelBorder(this.props.summoner[0].summonerLevel)}/>
-                    <p className="summonerLevel">{this.props.summoner[0].summonerLevel}</p>
+                    <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + datas.summoner.profileIconId + ".png"}/>
+                    <img className="levelBorder" src={this.levelBorder(datas.summoner.summonerLevel)}/>
+                    <div className="summonerLevel">{datas.summoner.summonerLevel}</div>
                 </div>
+                <table>
+                    <thead>
+                    <tr className="header head">
+                        <th className="col rank">championId</th>
+                        <th className="col">championLevel</th>
+                        <th className="col date">championPoints</th>
+                        <th className="col guesses">lastPlayTime</th>
+                        <th className="col guesses">championPointsSinceLastLevel</th>
+                        <th className="col guesses">championPointsUntilNextLevel</th>
+                        <th className="col guesses">chestGranted</th>
+                        <th className="col guesses">tokensEarned</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                {datas.mastery.map((champion) => (
+                    <tr key={champion.championId} className="header head">
+                        <th className="col rank">{champion.championId}</th>
+                        <th className="col">{champion.championLevel}</th>
+                        <th className="col date">{champion.championPoints}</th>
+                        <th className="col guesses">{champion.lastPlayTime}</th>
+                        <th className="col guesses">{champion.championPointsSinceLastLevel}</th>
+                        <th className="col guesses">{champion.championPointsUntilNextLevel}</th>
+                        <th className="col guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
+                        <th className="col guesses">{champion.tokensEarned}</th>
+                    </tr>
+                ))}
+                    </tbody>
+                </table>
             </div>
 
         )

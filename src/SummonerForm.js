@@ -20,7 +20,7 @@ class SummonerForm extends Component {
         this.state = {
             summoner: '',
             region: 'EUW1',
-            apiCall: null
+            isValid: false
         };
     }
 
@@ -34,21 +34,15 @@ class SummonerForm extends Component {
         console.log(call);
         event.target.className += " was-validated";
         if(event.target.checkValidity()){
-            this.setState({apiCall: call})
+            this.setState({isValid: true})
         }
     };
 
-    persistSummoner = (event) => {
-        event.preventDefault();
-        const newSummoner = {summoner: this.props.summoner, region: this.props.region};
-
-    }
-
     render() {
-        const { apiCall } = this.state;
+        const { summoner, region, isValid } = this.state;
         return (
             <div>
-            {(apiCall === null ? (
+            {(!isValid ? (
                 <form className="needs-validation" noValidate onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>Summoner Name</label>
@@ -81,7 +75,7 @@ class SummonerForm extends Component {
                     <input type="submit" value="Envoyer" />
                 </form>
             ) : (
-                <ApiRequest apiCall={apiCall}/>
+                <ApiRequest summoner={summoner} region={region} />
             ))}
             </div>
         );

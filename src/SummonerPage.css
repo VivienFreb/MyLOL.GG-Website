@@ -4,9 +4,7 @@
     width: 500px;
     height: 500px;
 
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.51);
-
-    position: absolute;
+    position: relative;
     top:0;
     left: 0;
     margin: auto;
@@ -38,7 +36,10 @@
     font-weight: bold;
     color: white;
     position: absolute;
-    left: 227px;
-    bottom: 70px;
+    left: 215px;
+    bottom: 67px;
     text-align: center;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
 }
