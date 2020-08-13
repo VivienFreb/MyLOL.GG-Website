@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import SummonerPage from "./SummonerPage";
+import ApiRequest from "./ApiRequest";
 
 const REGIONS = [
     {region:'EUW', val: "EUW1"},
@@ -17,7 +19,8 @@ class SummonerForm extends Component {
         super(props);
         this.state = {
             summoner: '',
-            region: 'EUW1'
+            region: 'EUW1',
+            apiCall: null
         };
     }
 
@@ -27,10 +30,11 @@ class SummonerForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('https://' + this.state.region.toLowerCase() +'.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.state.summoner);
+        const call = 'https://' + this.state.region.toLowerCase() + '.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.state.summoner;
+        console.log(call);
         event.target.className += " was-validated";
         if(event.target.checkValidity()){
-            console.log("Good!")
+            this.setState({apiCall: call})
         }
     };
 
@@ -41,34 +45,45 @@ class SummonerForm extends Component {
     }
 
     render() {
+        const { apiCall } = this.state;
         return (
-            <form className="needs-validation" noValidate onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                    <label>Summoner Name</label>
-                    <input
-                        className="form-control"
-                        id="summoner"
-                        type="text"
-                        onChange={this.handleChange}
-                        placeholder="Enter your Summoner Name"
-                        required
-                        minLength="3"
-                        maxLength="16"
-                        value={this.state.summoner}
-                    />
-                    <div className="invalid-feedback">
-                        Summoner is required with minimum length of 3 and max of 16
+            <div>
+            {(apiCall === null ? (
+                <form className="needs-validation" noValidate onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <label>Summoner Name</label>
+                        <input
+                            className="form-control"
+                            id="summoner"
+                            type="text"
+                            onChange={this.handleChange}
+                            placeholder="Enter your Summoner Name"
+                            required
+                            minLength="3"
+                            maxLength="16"
+                            value={this.state.summoner}
+                        />
+                        <div className="invalid-feedback">
+                            Summoner is required with minimum length of 3 and max of 16
+                        </div>
                     </div>
-                </div>
-                <div className="form-group">
-                    <select className="custom-select" onChange={this.handleChange}>
-                        {REGIONS.map(({region, val}) => (
-                            <option key={region} value={val}>{region}</option>
-                        ))}
-                    </select>
-                </div>
-                <input type="submit" value="Envoyer" />
-            </form>
+                    <div className="form-group">
+                        <select
+                            className="custom-select"
+                            id="region"
+                            onChange={this.handleChange}
+                        >
+                            {REGIONS.map(({region, val}) => (
+                                <option key={region} value={val}>{region}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <input type="submit" value="Envoyer" />
+                </form>
+            ) : (
+                <ApiRequest apiCall={apiCall}/>
+            ))}
+            </div>
         );
     }
 }

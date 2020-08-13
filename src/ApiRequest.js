@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import SummonerPage from "./SummonerPage";
 
-const API_KEY = process.env.REACT_APP_RIOT_API_KEY;
+const CORS = "https://cors-anywhere.herokuapp.com/";
+const API_KEY = "?api_key=" + process.env.REACT_APP_RIOT_API_KEY;
 
 
 class ApiRequest extends Component {
@@ -11,20 +13,18 @@ class ApiRequest extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            summoner: []
         };
     }
 
     componentDidMount() {
-
-        fetch("https://cors-anywhere.herokuapp.com/https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/TooFat4You?api_key=" + API_KEY)
-            .then(res => res.json())
+        fetch(CORS + this.props.apiCall + API_KEY)
+            .then(response => response.json())
             .then(
                 (result) => {
-                    console.log(result)
                     this.setState({
                         isLoaded: true,
-                        items: result
+                        summoner: result
                     });
                 },
                 // Note: it's important to handle errors here
@@ -40,21 +40,14 @@ class ApiRequest extends Component {
     }
 
     render() {
-        const { error, isLoaded, items } = this.state;
+        const { error, isLoaded, summoner } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
             return (
-                <ul>
-                    <p>User : {items.id}</p>
-                    <p>Account Id : {items.accountId}</p>
-                    <p>puuid : {items.puuid}</p>
-                    <p>Nme : {items.name}</p>
-                    <img src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + items.profileIconId + ".png"}/>
-                    <p>Level : {items.summonerLevel}</p>
-                </ul>
+                <SummonerPage summoner={summoner}/>
             );
         }
     }
