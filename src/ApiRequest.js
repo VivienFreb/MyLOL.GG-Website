@@ -30,9 +30,6 @@ class ApiRequest extends Component {
                 (res) => {
                     summonerId = res.data.id;
                     datas.push(res.data);
-                    this.setState({
-                        results: datas
-                    });
                 },
                 (error) => {
                     this.setState({
@@ -40,18 +37,24 @@ class ApiRequest extends Component {
                         error
                     });
                 })
+
             .then(() => axios.get(CORS + this.props.region + MASTERY_QUERY + summonerId + API_KEY)
                 .then(
                     (res) => {
                         datas.push(res.data)
-                        this.setState({
-                            results: datas
-                        });
                     }))
+
             .then(() => axios.get(CHAMP_QUERY)
                 .then(
                     (res) => {
-                        datas.push(res.data.data)
+                        const response = res.data.data;
+                        const champNameId = [];
+
+                        for (var ele in response) {
+                            champNameId.push({clef: ele, name: response[ele].name, value: response[ele].key})
+                        }
+
+                        datas.push(champNameId)
                         this.setState({
                             isLoaded: true,
                             results: datas

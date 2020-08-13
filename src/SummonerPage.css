@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Rowdies&display=swap');
 
 .iconContainer{
-    width: 500px;
-    height: 500px;
+    width: 350px;
+    height: 350px;
 
     position: relative;
-    top:0;
-    left: 0;
     margin: auto;
+    text-align: center;
 }
 
 .summonerName{
     font-family: 'Rowdies', cursive;
     font-size: 300%;
+    text-align: center;
 }
 
 .profileIcon{
     position: relative;
-    top: 110px;
+    top: 80px;
     left: 0;
     width: 55%;
     height: 55%;
@@ -32,14 +32,24 @@
 }
 
 .summonerLevel {
-    font-size: 160%;
     font-weight: bold;
     color: white;
     position: absolute;
-    left: 215px;
-    bottom: 67px;
+    left: 151px;
+    bottom: 46px;
     text-align: center;
-    width: 70px;
-    height: 70px;
-    line-height: 70px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+
+/* [Table] */
+.avatar img{
+    height: 50px;
+}
+
+table.masteries {
+    margin-left:auto;
+    margin-right:auto;
+    width: 70%;
 }

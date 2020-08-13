@@ -5,11 +5,9 @@ import './SummonerPage.css'
 
 class  SummonerPage extends Component{
     state = {
-        datas : {
-            summoner: this.props.res[0],
-            mastery: this.props.res[1],
-            champions: this.props.res[2]
-        }
+        summoner: this.props.res[0],
+        mastery: this.props.res[1],
+        champions: this.props.res[2]
     }
 
 
@@ -46,52 +44,58 @@ class  SummonerPage extends Component{
         }
     }
 
+    getChampionNameById = (championId) =>{
+        const champions = this.state.champions;
+        var result = champions.find(ele => ele.value == championId);
+        return result.name;
+    }
 
+    getImage(champion){
+        const champions = this.state.champions;
+        var result = champions.find(ele => ele.value == champion);
+        return "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/" + result.clef + ".png"
+    }
 
     render(){
-        const { datas } = this.state;
-        console.log(datas)
-        console.log("aaaaaaa")
+        const { summoner, champions, mastery } = this.state;
+        this.getChampionNameById("777")
+
         return(
             <div>
-                {/*<ul>*/}
-                {/*    <p>User : {this.props.summoner.id}</p>*/}
-                {/*    <p>Account Id : {this.props.summoner.accountId}</p>*/}
-                {/*    <p>puuid : {this.props.summoner.puuid}</p>*/}
-                {/*    <p>Nme : {this.props.summoner.name}</p>*/}
-                {/*</ul>*/}
-                <p className="summonerName">{datas.summoner.name}</p>
+                <p className="summonerName">{summoner.name}</p>
                 <div className="iconContainer">
-                    <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + datas.summoner.profileIconId + ".png"}/>
-                    <img className="levelBorder" src={this.levelBorder(datas.summoner.summonerLevel)}/>
-                    <div className="summonerLevel">{datas.summoner.summonerLevel}</div>
+                    <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summoner.profileIconId + ".png"}/>
+                    <img className="levelBorder" src={this.levelBorder(summoner.summonerLevel)}/>
+                    <div className="summonerLevel">{summoner.summonerLevel}</div>
                 </div>
-                <table>
+                <table className="masteries">
                     <thead>
                     <tr className="header head">
-                        <th className="col rank">championId</th>
-                        <th className="col">championLevel</th>
-                        <th className="col date">championPoints</th>
-                        <th className="col guesses">lastPlayTime</th>
-                        <th className="col guesses">championPointsSinceLastLevel</th>
-                        <th className="col guesses">championPointsUntilNextLevel</th>
-                        <th className="col guesses">chestGranted</th>
-                        <th className="col guesses">tokensEarned</th>
+                        <th className="rank"> </th>
+                        <th className="rank">Champion</th>
+                        <th className="">Level</th>
+                        <th className="date">Mastery Points</th>
+                        <th className="guesses">Last Time Played</th>
+                        <th className="guesses">championPointsSinceLastLevel</th>
+                        <th className="guesses">Points for next level</th>
+                        <th className="guesses">Chest ?</th>
+                        <th className="guesses">Tokens Earned</th>
                     </tr>
                     </thead>
                     <tbody>
-                {datas.mastery.map((champion) => (
-                    <tr key={champion.championId} className="header head">
-                        <th className="col rank">{champion.championId}</th>
-                        <th className="col">{champion.championLevel}</th>
-                        <th className="col date">{champion.championPoints}</th>
-                        <th className="col guesses">{champion.lastPlayTime}</th>
-                        <th className="col guesses">{champion.championPointsSinceLastLevel}</th>
-                        <th className="col guesses">{champion.championPointsUntilNextLevel}</th>
-                        <th className="col guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
-                        <th className="col guesses">{champion.tokensEarned}</th>
-                    </tr>
-                ))}
+                    {mastery.map(champion => (
+                        <tr key={champion.championId} className="header head">
+                            <th className=" avatar"><img src={this.getImage(champion.championId)} alt=""/></th>
+                            <th className=" rank">{this.getChampionNameById(champion.championId)}</th>
+                            <th className="">{champion.championLevel}</th>
+                            <th className="date">{champion.championPoints}</th>
+                            <th className="guesses">{champion.lastPlayTime}</th>
+                            <th className="guesses">{champion.championPointsSinceLastLevel}</th>
+                            <th className="guesses">{champion.championPointsUntilNextLevel}</th>
+                            <th className="guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
+                            <th className="guesses">{champion.tokensEarned}</th>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
             </div>
