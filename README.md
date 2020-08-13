@@ -9,7 +9,7 @@ Affichage :
 * Niveau
 * Cadre de niveau
 
-![Search result](https://puu.sh/Ghm7x/8bfd2b4a7d.png)
+![Search result](https://puu.sh/GhmjK/2eaf9cf90f.png)
 
 
 
