@@ -46,6 +46,7 @@ class ApiRequest extends Component {
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
+            console.log(summoner)
             return (
                 <SummonerPage summoner={summoner}/>
             );

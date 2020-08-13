@@ -6,7 +6,6 @@ import './SummonerPage.css'
 class  SummonerPage extends Component{
 
     levelBorder(level){
-        console.log("Call with level : " + level);
         level = parseInt(level);
         if(level < 30){
             return "https://vignette.wikia.nocookie.net/leagueoflegends/images/8/86/Level_1_Summoner_Icon_Border.png/revision/latest?cb=20180324105818";
