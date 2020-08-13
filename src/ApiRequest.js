@@ -13,45 +13,43 @@ class ApiRequest extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            summoner: []
+            results: [],
         };
     }
 
     componentDidMount() {
-        fetch(CORS + this.props.apiCall + API_KEY)
-            .then(response => response.json())
+        const datas = [];
+        axios.get(CORS + this.props.apiCall + API_KEY)
+        // axios.get(`https://jsonplaceholder.typicode.com/users`)
             .then(
-                (result) => {
+                (res) => {
+                    datas.push(res.data);
                     this.setState({
                         isLoaded: true,
-                        summoner: result
+                        results: datas
                     });
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
                 (error) => {
                     this.setState({
                         isLoaded: true,
                         error
                     });
-                }
-            )
+                })
     }
 
-    render() {
-        const { error, isLoaded, summoner } = this.state;
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
-        } else {
-            console.log(summoner)
-            return (
-                <SummonerPage summoner={summoner}/>
-            );
-        }
+
+render() {
+    const { error, isLoaded, results } = this.state;
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div>Loading...</div>;
+    } else {
+        return (
+            <SummonerPage summoner={results}/>
+        );
     }
+}
 }
 
 export default ApiRequest

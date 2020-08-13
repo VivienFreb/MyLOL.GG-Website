@@ -49,12 +49,11 @@ class  SummonerPage extends Component{
                 {/*    <p>puuid : {this.props.summoner.puuid}</p>*/}
                 {/*    <p>Nme : {this.props.summoner.name}</p>*/}
                 {/*</ul>*/}
-
-                <p className="summonerName">{this.props.summoner.name}</p>
+                <p className="summonerName">{this.props.summoner[0].name}</p>
                 <div className="iconContainer">
-                    <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + this.props.summoner.profileIconId + ".png"}/>
-                    <img className="levelBorder" src={this.levelBorder(this.props.summoner.summonerLevel)}/>
-                    <p className="summonerLevel">{this.props.summoner.summonerLevel}</p>
+                    <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + this.props.summoner[0].profileIconId + ".png"}/>
+                    <img className="levelBorder" src={this.levelBorder(this.props.summoner[0].summonerLevel)}/>
+                    <p className="summonerLevel">{this.props.summoner[0].summonerLevel}</p>
                 </div>
             </div>
 
