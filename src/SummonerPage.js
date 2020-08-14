@@ -67,46 +67,76 @@ class  SummonerPage extends Component{
         return moment.unix(workingUnix).format("DD/MM/YYYY")
     }
 
+    getMasteryLevelIcon(masteryLevel){
+        switch(masteryLevel){
+            case 1:
+                return "https://vignette.wikia.nocookie.net/leagueoflegends/images/d/d8/Champion_Mastery_Level_1_Flair.png/revision/latest/scale-to-width-down/50?cb=20150312005229"
+            case 2:
+                return "https://vignette.wikia.nocookie.net/leagueoflegends/images/4/4d/Champion_Mastery_Level_2_Flair.png/revision/latest/scale-to-width-down/50?cb=20150312005244"
+            case 3:
+                return "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e5/Champion_Mastery_Level_3_Flair.png/revision/latest/scale-to-width-down/50?cb=20150312005319"
+            case 4:
+                return "https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b6/Champion_Mastery_Level_4_Flair.png/revision/latest/scale-to-width-down/50?cb=20200113041829"
+            case 5:
+                return "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/96/Champion_Mastery_Level_5_Flair.png/revision/latest/scale-to-width-down/50?cb=20200113041512"
+            case 6:
+                return "https://vignette.wikia.nocookie.net/leagueoflegends/images/b/be/Champion_Mastery_Level_6_Flair.png/revision/latest/scale-to-width-down/50?cb=20200113041636"
+            case 7:
+                return "https://vignette.wikia.nocookie.net/leagueoflegends/images/7/7a/Champion_Mastery_Level_7_Flair.png/revision/latest/scale-to-width-down/50?cb=20200113041615"
+            default:
+                return
+        }
+    }
+
     render(){
         const { summoner, champions, mastery } = this.state;
         this.getChampionNameById("777")
 
         return(
             <div>
-                <p className="summonerName">{summoner.name}</p>
-                <div className="iconContainer">
-                    <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summoner.profileIconId + ".png"}/>
-                    <img className="levelBorder" src={this.levelBorder(summoner.summonerLevel)}/>
-                    <div className="summonerLevel">{summoner.summonerLevel}</div>
+                <div className="sidebar">
+                    <p className="summonerName">{summoner.name}</p>
+                    <div className="iconContainer">
+                        <img className="profileIcon" src={"http://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summoner.profileIconId + ".png"}/>
+                        <img className="levelBorder" src={this.levelBorder(summoner.summonerLevel)}/>
+                        <div className="summonerLevel">{summoner.summonerLevel}</div>
+                    </div>
                 </div>
-                <table id="sampleTable" className="masteries table table-striped sampleTable">
-                    <thead>
-                    <tr className="header head">
-                        <th className="rank"> </th>
-                        <th className="rank">Champion</th>
-                        <th className="">Level</th>
-                        <th className="date">Mastery Points</th>
-                        <th className="guesses">Last Time Played</th>
-                        <th className="guesses">Points for next level</th>
-                        <th className="guesses">Chest ?</th>
-                        <th className="guesses">Tokens Earned</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {mastery.map(champion => (
-                        <tr key={champion.championId} className="header head">
-                            <th className=" avatar"><img src={this.getImage(champion.championId)} alt=""/></th>
-                            <th className=" rank">{this.getChampionNameById(champion.championId)}</th>
-                            <th className="">{champion.championLevel}</th>
-                            <th className="date">{this.numberWithCommas(champion.championPoints)}</th>
-                            <th className="guesses">{this.unixConvert(champion.lastPlayTime)}</th>
-                            <th className="guesses">{this.numberWithCommas(champion.championPointsUntilNextLevel)}</th>
-                            <th className="guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
-                            <th className="guesses">{champion.tokensEarned}</th>
+                <div className="content">
+                    <table id="sampleTable" className="masteries table table-striped sampleTable">
+                        <thead>
+                        <tr className="header head">
+                            <th className="rank"> </th>
+                            <th className="rank">Champion</th>
+                            <th className="">Level</th>
+                            <th className="date">Mastery Points</th>
+                            <th className="guesses">Last Time Played</th>
+                            <th className="guesses">Points for next level</th>
+                            <th className="guesses">Chest ?</th>
+                            <th className="guesses">Tokens Earned</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {mastery.map(champion => (
+                            <tr key={champion.championId} className="header head">
+                                <th className=" avatar"><img src={this.getImage(champion.championId)} alt=""/></th>
+                                <th className=" rank">{this.getChampionNameById(champion.championId)}</th>
+                                <th className="">
+                                    {champion.championLevel}
+                                    <span>
+                                        <img alt="mastery level icon" src={this.getMasteryLevelIcon(champion.championLevel)}/>
+                                    </span>
+                                </th>
+                                <th className="date">{this.numberWithCommas(champion.championPoints)}</th>
+                                <th className="guesses">{this.unixConvert(champion.lastPlayTime)}</th>
+                                <th className="guesses">{this.numberWithCommas(champion.championPointsUntilNextLevel)}</th>
+                                <th className="guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
+                                <th className="guesses">{champion.tokensEarned}</th>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
         )
