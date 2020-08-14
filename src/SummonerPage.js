@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 
 import './SummonerPage.css'
 
+
 class  SummonerPage extends Component{
     state = {
         summoner: this.props.res[0],
@@ -56,6 +57,10 @@ class  SummonerPage extends Component{
         return "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/" + result.clef + ".png"
     }
 
+    numberWithCommas(x) {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     render(){
         const { summoner, champions, mastery } = this.state;
         this.getChampionNameById("777")
@@ -68,7 +73,7 @@ class  SummonerPage extends Component{
                     <img className="levelBorder" src={this.levelBorder(summoner.summonerLevel)}/>
                     <div className="summonerLevel">{summoner.summonerLevel}</div>
                 </div>
-                <table className="masteries">
+                <table id="sampleTable" className="masteries table table-striped sampleTable">
                     <thead>
                     <tr className="header head">
                         <th className="rank"> </th>
@@ -76,7 +81,6 @@ class  SummonerPage extends Component{
                         <th className="">Level</th>
                         <th className="date">Mastery Points</th>
                         <th className="guesses">Last Time Played</th>
-                        <th className="guesses">championPointsSinceLastLevel</th>
                         <th className="guesses">Points for next level</th>
                         <th className="guesses">Chest ?</th>
                         <th className="guesses">Tokens Earned</th>
@@ -88,10 +92,9 @@ class  SummonerPage extends Component{
                             <th className=" avatar"><img src={this.getImage(champion.championId)} alt=""/></th>
                             <th className=" rank">{this.getChampionNameById(champion.championId)}</th>
                             <th className="">{champion.championLevel}</th>
-                            <th className="date">{champion.championPoints}</th>
+                            <th className="date">{this.numberWithCommas(champion.championPoints)}</th>
                             <th className="guesses">{champion.lastPlayTime}</th>
-                            <th className="guesses">{champion.championPointsSinceLastLevel}</th>
-                            <th className="guesses">{champion.championPointsUntilNextLevel}</th>
+                            <th className="guesses">{this.numberWithCommas(champion.championPointsUntilNextLevel)}</th>
                             <th className="guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
                             <th className="guesses">{champion.tokensEarned}</th>
                         </tr>
