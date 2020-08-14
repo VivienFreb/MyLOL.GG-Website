@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, {Component} from 'react'
+import moment from 'moment'
 
 import './SummonerPage.css'
 
@@ -61,6 +62,11 @@ class  SummonerPage extends Component{
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    unixConvert(unix){
+        var workingUnix = unix.toString().slice(0, -3);
+        return moment.unix(workingUnix).format("DD/MM/YYYY")
+    }
+
     render(){
         const { summoner, champions, mastery } = this.state;
         this.getChampionNameById("777")
@@ -93,7 +99,7 @@ class  SummonerPage extends Component{
                             <th className=" rank">{this.getChampionNameById(champion.championId)}</th>
                             <th className="">{champion.championLevel}</th>
                             <th className="date">{this.numberWithCommas(champion.championPoints)}</th>
-                            <th className="guesses">{champion.lastPlayTime}</th>
+                            <th className="guesses">{this.unixConvert(champion.lastPlayTime)}</th>
                             <th className="guesses">{this.numberWithCommas(champion.championPointsUntilNextLevel)}</th>
                             <th className="guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
                             <th className="guesses">{champion.tokensEarned}</th>
