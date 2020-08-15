@@ -21,6 +21,11 @@ class ApiRequest extends Component {
         };
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("new summoner");
+        // == new summoner => recall api
+    }
+
     componentDidMount() {
         const datas = [];
         var summonerId = '';

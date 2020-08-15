@@ -27,6 +27,7 @@ class SummonerForm extends Component {
     }
 
     handleChange = (event) => {
+        console.log("valid", this.state.isValid)
         this.setState({[event.target.id]: event.target.value});
     };
 
