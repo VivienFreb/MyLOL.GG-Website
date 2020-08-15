@@ -93,7 +93,7 @@ class  SummonerPage extends Component{
         this.getChampionNameById("777")
 
         return(
-            <div>
+            <div className="summonerPage">
                 <div className="sidebar">
                     <p className="summonerName">{summoner.name}</p>
                     <div className="iconContainer">

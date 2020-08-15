@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import SummonerPage from "./SummonerPage";
 import ApiRequest from "./ApiRequest";
 
+import './SummonerForm.css'
+
 const REGIONS = [
     {region:'EUW', val: "EUW1"},
     {region:'NA', val: "NA1"},
@@ -40,12 +42,10 @@ class SummonerForm extends Component {
 
     render() {
         const { summoner, region, isValid } = this.state;
-        return (
-            <div>
-            {(!isValid ? (
-                <form className="needs-validation" noValidate onSubmit={this.handleSubmit}>
+        return [
+            <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+                <form className="search-form form-inline needs-validation" noValidate onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label>Summoner Name</label>
                         <input
                             className="form-control"
                             id="summoner"
@@ -74,11 +74,16 @@ class SummonerForm extends Component {
                     </div>
                     <input type="submit" value="Envoyer" />
                 </form>
-            ) : (
-                <ApiRequest summoner={summoner} region={region} />
-            ))}
+            </nav>,
+            <div class="summonerContent">
+                {!isValid ? (
+                    <p> Bienvenue sur MyLOL.GG </p>
+                ) : (
+                    <ApiRequest summoner={summoner} region={region} />
+                )}
             </div>
-        );
+
+        ];
     }
 }
 
