@@ -21,12 +21,8 @@ class ApiRequest extends Component {
         };
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("new summoner");
-        // == new summoner => recall api
-    }
 
-    componentDidMount() {
+    apiCall(){
         const datas = [];
         var summonerId = '';
         axios.get(CORS + this.props.region + SUMMONER_QUERY + this.props.summoner + API_KEY)
@@ -47,7 +43,14 @@ class ApiRequest extends Component {
                 .then(
                     (res) => {
                         datas.push(res.data)
-                    }))
+                    },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        });
+                    })
+            )
 
             .then(() => axios.get(CHAMP_QUERY)
                 .then(
@@ -64,22 +67,36 @@ class ApiRequest extends Component {
                             isLoaded: true,
                             results: datas
                         });
+                    },
+                    (error) => {
+                        this.setState({
+                            isLoaded: true,
+                            error
+                        });
                     }))
     }
 
-
-render() {
-    const { error, isLoaded, results } = this.state;
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-        return <div>Loading...</div>;
-    } else {
-        return (
-            <SummonerPage res={results}/>
-        );
+    componentDidMount() {
+        this.apiCall()
     }
-}
+
+
+    render() {
+        const { error, isLoaded, results } = this.state;
+        if (error) {
+            if(error.status === 429){
+                var retryAfter = (results.header['retry-after'] || 10) * 1000;
+                return <div className="alert alert-danger">Error: {error.message} retry in {retryAfter}</div>;
+            }
+            return <div className="alert alert-danger">Error: {error.message}</div>;
+        } else if (!isLoaded) {
+            return <div className="alert alert-info">Loading...</div>;
+        } else {
+            return (
+                <SummonerPage res={results}/>
+            );
+        }
+    }
 }
 
 export default ApiRequest

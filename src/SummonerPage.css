@@ -5,15 +5,16 @@
     width: auto;
     position: fixed;
     z-index: 1;
-    top: 30px;
+    top: 55px;
     left: 0;
-    background-color: #f9f9f9;
+    background-color: rgba(111, 12, 196, 0.5);
     overflow-x: hidden;
     padding-top: 20px;
 }
 
 .content {
-    padding-left: 200px;
+    margin-left: 350px;
+    background-color: rgba(205, 205, 205, 0.75);
 }
 
 .iconContainer{
@@ -27,8 +28,9 @@
 
 .summonerName{
     font-family: 'Rowdies', cursive;
-    font-size: 300%;
+    font-size: 170%;
     text-align: center;
+    color: #F0E6D2;
 }
 
 .profileIcon{
@@ -67,7 +69,8 @@
 table.masteries {
     margin-left:auto;
     margin-right:auto;
-    width: 70%;
+    width: 85%;
+    margin-bottom: 0;
 }
 
 .masteries th, .masteries td {

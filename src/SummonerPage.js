@@ -5,7 +5,7 @@ import moment from 'moment'
 import './SummonerPage.css'
 
 
-class  SummonerPage extends Component{
+class SummonerPage extends Component{
     state = {
         summoner: this.props.res[0],
         mastery: this.props.res[1],
@@ -48,13 +48,13 @@ class  SummonerPage extends Component{
 
     getChampionNameById = (championId) =>{
         const champions = this.state.champions;
-        var result = champions.find(ele => ele.value == championId);
+        var result = champions.find(ele => ele.value === championId.toString());
         return result.name;
     }
 
     getImage(champion){
         const champions = this.state.champions;
-        var result = champions.find(ele => ele.value == champion);
+        var result = champions.find(ele => ele.value === champion.toString());
         return "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/" + result.clef + ".png"
     }
 
@@ -90,9 +90,7 @@ class  SummonerPage extends Component{
 
     render(){
         const { summoner, champions, mastery } = this.state;
-        this.getChampionNameById("777")
-
-        return(
+        return[
             <div className="summonerPage">
                 <div className="sidebar">
                     <p className="summonerName">{summoner.name}</p>
@@ -139,7 +137,7 @@ class  SummonerPage extends Component{
                 </div>
             </div>
 
-        )
+        ]
     }
 
 }

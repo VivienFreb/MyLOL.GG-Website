@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SummonerPage from "./SummonerPage";
+
 import ApiRequest from "./ApiRequest";
 
 import './SummonerForm.css'
@@ -27,24 +27,28 @@ class SummonerForm extends Component {
     }
 
     handleChange = (event) => {
-        console.log("valid", this.state.isValid)
         this.setState({[event.target.id]: event.target.value});
     };
 
     handleSubmit = (event) => {
+        this.setState({isValid: false});
         event.preventDefault();
-        const call = 'https://' + this.state.region.toLowerCase() + '.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.state.summoner;
-        console.log(call);
         event.target.className += " was-validated";
         if(event.target.checkValidity()){
             this.setState({isValid: true})
         }
     };
 
+    newSearch = () => {
+        this.setState({
+            isValid: false
+        })
+    };
+
     render() {
         const { summoner, region, isValid } = this.state;
         return [
-            <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar sticky-top navbar-light bg-light">
                 <form className="search-form form-inline needs-validation" noValidate onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <input
@@ -58,7 +62,7 @@ class SummonerForm extends Component {
                             maxLength="16"
                             value={this.state.summoner}
                         />
-                        <div className="invalid-feedback">
+                        <div className="invalid-feedback alert alert-danger">
                             Summoner is required with minimum length of 3 and max of 16
                         </div>
                     </div>
@@ -73,14 +77,15 @@ class SummonerForm extends Component {
                             ))}
                         </select>
                     </div>
-                    <input type="submit" value="Envoyer" />
+                    <input type="submit" value="Envoyer" onClick={this.newSearch}/>
                 </form>
+
             </nav>,
             <div class="summonerContent">
-                {!isValid ? (
-                    <p> Bienvenue sur MyLOL.GG </p>
-                ) : (
+                {isValid ? (
                     <ApiRequest summoner={summoner} region={region} />
+                ) : (
+                    <p className="summonerName">Presentation du site</p>
                 )}
             </div>
 
