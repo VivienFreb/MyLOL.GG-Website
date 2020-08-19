@@ -1,0 +1,33 @@
+.search-form{
+    float: right;
+}
+
+.search-form #summoner{
+    width: 400px;
+}
+
+.invalid-feedback{
+    position: absolute;
+    top: 45px;
+    width: auto;
+}
+
+.presentationSite{
+    height: 925px;
+    margin-bottom: 0;
+}
+
+.summonerContent{
+    background: url("background/yone.jpg") no-repeat center center fixed;
+    height: 95vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Navbar */
+.navbar{
+    height: 5vh;
+    background-color: rgba(111, 12, 196, 0.5);
+}

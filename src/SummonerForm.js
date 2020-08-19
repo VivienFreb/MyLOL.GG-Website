@@ -77,7 +77,7 @@ class SummonerForm extends Component {
                             ))}
                         </select>
                     </div>
-                    <input type="submit" value="Envoyer" onClick={this.newSearch}/>
+                    <input type="submit" value="Submit" onClick={this.newSearch}/>
                 </form>
 
             </nav>,

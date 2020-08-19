@@ -69,12 +69,17 @@
 table.masteries {
     margin-left:auto;
     margin-right:auto;
-    width: 85%;
+    width: 85%!important;
     margin-bottom: 0;
+    border:none;
 }
 
 .masteries th, .masteries td {
      padding: 0.25rem;
      vertical-align: middle;
-     border-top: 1px solid #dee2e6;
+    border: none;
+}
+
+tbody .level {
+    text-align: center;
 }

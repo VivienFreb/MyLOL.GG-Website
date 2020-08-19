@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, {Component} from 'react'
 import moment from 'moment'
 
@@ -88,8 +87,23 @@ class SummonerPage extends Component{
         }
     }
 
+    componentDidMount() {
+        const jQuery = document.createElement('script');
+        const popper = document.createElement('script');
+        const bootstrap = document.createElement('script');
+        const bootstraptable = document.createElement('script');
+        jQuery.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        popper.src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        bootstrap.src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        bootstraptable.src = "https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"
+        document.body.appendChild(jQuery)
+        document.body.appendChild(popper)
+        document.body.appendChild(bootstrap)
+        document.body.appendChild(bootstraptable)
+    }
+
     render(){
-        const { summoner, champions, mastery } = this.state;
+        const { summoner, mastery } = this.state;
         return[
             <div className="summonerPage">
                 <div className="sidebar">
@@ -101,42 +115,46 @@ class SummonerPage extends Component{
                     </div>
                 </div>
                 <div className="content">
-                    <table id="sampleTable" className="masteries table table-striped sampleTable">
+                    <table data-toggle="table"
+                           data-sortable="true"
+                           data-sort-name="level"
+                           data-sort-order="desc"
+                           data-search="true"
+                           className="masteries table table-striped">
                         <thead>
                         <tr className="header head">
-                            <th className="rank"> </th>
-                            <th className="rank">Champion</th>
-                            <th className="">Level</th>
-                            <th className="date">Mastery Points</th>
-                            <th className="guesses">Last Time Played</th>
-                            <th className="guesses">Points for next level</th>
-                            <th className="guesses">Chest ?</th>
-                            <th className="guesses">Tokens Earned</th>
+                            <th className="avatar"> </th>
+                            <th data-sortable="true" className="champion">Champion</th>
+                            <th data-field="level" data-sortable="true" className="level">Level</th>
+                            <th data-sortable="true" className="mastery">Mastery Points</th>
+                            <th data-sortable="true" className="played">Last Time Played</th>
+                            <th data-sortable="true" className="pointsNext">Points for next level</th>
+                            <th data-sortable="true" className="chest">Chest ?</th>
+                            <th data-sortable="true" className="tokens">Tokens Earned</th>
                         </tr>
                         </thead>
                         <tbody>
                         {mastery.map(champion => (
                             <tr key={champion.championId} className="header head">
-                                <th className=" avatar"><img src={this.getImage(champion.championId)} alt=""/></th>
-                                <th className=" rank">{this.getChampionNameById(champion.championId)}</th>
-                                <th className="">
+                                <th className="avatar"><img src={this.getImage(champion.championId)} alt=""/></th>
+                                <th className="champion">{this.getChampionNameById(champion.championId)}</th>
+                                <th className="level">
                                     {champion.championLevel}
                                     <span>
                                         <img alt="mastery level icon" src={this.getMasteryLevelIcon(champion.championLevel)}/>
                                     </span>
                                 </th>
-                                <th className="date">{this.numberWithCommas(champion.championPoints)}</th>
-                                <th className="guesses">{this.unixConvert(champion.lastPlayTime)}</th>
-                                <th className="guesses">{this.numberWithCommas(champion.championPointsUntilNextLevel)}</th>
-                                <th className="guesses">{champion.chestGranted ? 'Oui' : 'Non'}</th>
-                                <th className="guesses">{champion.tokensEarned}</th>
+                                <th className="mastery">{champion.championPoints}</th>
+                                <th className="played">{this.unixConvert(champion.lastPlayTime)}</th>
+                                <th className="pointsNext">{champion.championPointsUntilNextLevel}</th>
+                                <th className="chest">{champion.chestGranted ? 'Oui' : 'Non'}</th>
+                                <th className="tokens">{champion.tokensEarned}</th>
                             </tr>
                         ))}
                         </tbody>
                     </table>
                 </div>
             </div>
-
         ]
     }
 
