@@ -78,10 +78,6 @@ table.masteries {
     border: none;
 }
 
-tbody .level {
-    text-align: center;
-}
-
 /* [Bootstrap Table] */
 .bootstrap-table .fixed-table-container.fixed-height:not(.has-footer) {
     border: none!important;

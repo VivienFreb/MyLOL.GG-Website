@@ -126,7 +126,7 @@ class SummonerPage extends Component{
                            className="masteries table table-striped">
                         <thead>
                         <tr className="header head">
-                            <th className="avatar"> </th>
+                            <th  data-searchable="false" className="avatar"> </th>
                             <th data-sortable="true" className="champion">Champion</th>
                             <th data-field="level" data-sortable="true" className="level">Level</th>
                             <th data-sortable="true" className="mastery">Mastery Points</th>
@@ -139,13 +139,13 @@ class SummonerPage extends Component{
                         <tbody>
                         {mastery.map(champion => (
                             <tr key={champion.championId} className="header head">
-                                <th className="avatar"><img src={this.getImage(champion.championId)} alt=""/></th>
+                                <th className="avatar"><img src={this.getImage(champion.championId)} alt=""/>                                    <span>
+                                        <img alt="mastery level icon" src={this.getMasteryLevelIcon(champion.championLevel)}/>
+                                    </span></th>
                                 <th className="champion">{this.getChampionNameById(champion.championId)}</th>
                                 <th className="level">
                                     {champion.championLevel}
-                                    <span>
-                                        <img alt="mastery level icon" src={this.getMasteryLevelIcon(champion.championLevel)}/>
-                                    </span>
+
                                 </th>
                                 <th className="mastery">{champion.championPoints}</th>
                                 <th className="played">{this.unixConvert(champion.lastPlayTime)}</th>
