@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import moment from 'moment'
 
+
 import './SummonerPage.css'
 
 
@@ -120,6 +121,8 @@ class SummonerPage extends Component{
                            data-sort-name="level"
                            data-sort-order="desc"
                            data-search="true"
+                           data-search-align="left"
+                           data-height="900"
                            className="masteries table table-striped">
                         <thead>
                         <tr className="header head">
@@ -147,7 +150,7 @@ class SummonerPage extends Component{
                                 <th className="mastery">{champion.championPoints}</th>
                                 <th className="played">{this.unixConvert(champion.lastPlayTime)}</th>
                                 <th className="pointsNext">{champion.championPointsUntilNextLevel}</th>
-                                <th className="chest">{champion.chestGranted ? 'Oui' : 'Non'}</th>
+                                <th className="chest">{champion.chestGranted ? 'Available' : 'Granted'}</th>
                                 <th className="tokens">{champion.tokensEarned}</th>
                             </tr>
                         ))}
