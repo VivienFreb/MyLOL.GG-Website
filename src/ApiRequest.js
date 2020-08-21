@@ -6,7 +6,7 @@ import SummonerPage from "./SummonerPage";
 const CORS = "https://cors-anywhere.herokuapp.com/https://";
 const SUMMONER_QUERY = ".api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 const MASTERY_QUERY = ".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
-const CHAMP_QUERY = "http://ddragon.leagueoflegends.com/cdn/10.16.1/data/en_US/champion.json";
+const CHAMP_QUERY = "https://ddragon.leagueoflegends.com/cdn/10.16.1/data/en_US/champion.json";
 const API_KEY = "?api_key=" + process.env.REACT_APP_RIOT_API_KEY;
 
 
