@@ -10,6 +10,7 @@
     background-color: rgba(111, 12, 196, 0.5);
     overflow-x: hidden;
     padding-top: 20px;
+    z-index: 0;
 }
 
 .content {
@@ -70,7 +71,6 @@
 table.masteries {
     margin-bottom: 0;
     border:none;
-    display:none;
 }
 
 table.table-hover{
