@@ -60,7 +60,7 @@ class SummonerForm extends Component {
     render() {
         const { summoner, region, isValid } = this.state;
         return [
-            <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
                 <a className="navbar-brand" href="#">
                     <img src={brand}
                          height="35"
@@ -102,7 +102,7 @@ class SummonerForm extends Component {
                             </select>
                         </div>
 
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <button className="btn btn-outline-purple my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
             </nav>,
@@ -110,31 +110,13 @@ class SummonerForm extends Component {
                 {isValid ? (
                     <ApiRequest summoner={summoner} region={region} />
                 ) : (
-                    <p className="presentationSite">Presentation du site Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor efficitur mi, non tempus libero mollis ut. Ut molestie vel felis convallis sodales. Donec faucibus nisi quis augue ullamcorper, in porttitor enim viverra. Pellentesque consectetur, eros at posuere varius, sem metus elementum diam, ut rutrum purus diam id neque. Aenean quis feugiat lectus. Aenean finibus lacus finibus pulvinar laoreet. Sed vel ex ac enim dictum placerat non ut libero.
-
-                        Morbi sagittis nisi eu nisl congue scelerisque. Mauris eu feugiat est. Nullam vestibulum, justo ac rutrum mollis, augue risus molestie ex, sed semper mi eros sit amet ex. Fusce maximus lacus sit amet tortor accumsan, ut eleifend ipsum lacinia. Nulla ac nibh lacus. Praesent imperdiet placerat ipsum non lacinia. Donec eu metus id erat dapibus placerat.
-
-                        Cras iaculis odio scelerisque dolor bibendum, vitae efficitur diam luctus. Maecenas lacinia aliquam tristique. Quisque condimentum, diam id tempus facilisis, mauris lorem egestas tortor, a tincidunt lacus tortor molestie odio. Nulla ex mauris, pellentesque quis efficitur maximus, aliquet ac arcu. Integer ac mollis eros, quis accumsan tortor. Aliquam efficitur suscipit fringilla. Vivamus pulvinar risus in ligula molestie sagittis. Praesent sit amet metus a mi ullamcorper mollis ut vestibulum lectus. Nunc sit amet erat at nunc tempus viverra. Nunc gravida id odio in vehicula. Nunc efficitur maximus consequat. In condimentum tellus ut urna congue auctor id vel turpis. Mauris congue egestas ipsum non bibendum.
-
-                        Nullam accumsan dignissim risus a fermentum. Donec condimentum dui eros, quis posuere elit scelerisque ut. In pulvinar arcu vel purus suscipit iaculis et non felis. Nulla venenatis urna sed dolor vulputate scelerisque. Suspendisse ullamcorper a mauris quis gravida. Phasellus ultrices mi magna, sit amet pellentesque tortor tempor sed. Fusce a ex nec massa malesuada rutrum. Etiam sed lacus diam. Vestibulum ut libero imperdiet dolor pulvinar semper nec sed mi. Sed vel orci vitae ante gravida pulvinar ac facilisis ex. In sit amet est tristique, vehicula justo at, venenatis augue. Maecenas ante ipsum, placerat tristique ultricies sit amet, pulvinar accumsan urna.
-
-                        Nam a arcu nunc. MLorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc auctor efficitur mi, non tempus libero mollis ut. Ut molestie vel felis convallis sodales. Donec faucibus nisi quis augue ullamcorper, in porttitor enim viverra. Pellentesque consectetur, eros at posuere varius, sem metus elementum diam, ut rutrum purus diam id neque. Aenean quis feugiat lectus. Aenean finibus lacus finibus pulvinar laoreet. Sed vel ex ac enim dictum placerat non ut libero.
-
-                        Morbi sagittis nisi eu nisl congue scelerisque. Mauris eu feugiat est. Nullam vestibulum, justo ac rutrum mollis, augue risus molestie ex, sed semper mi eros sit amet ex. Fusce maximus lacus sit amet tortor accumsan, ut eleifend ipsum lacinia. Nulla ac nibh lacus. Praesent imperdiet placerat ipsum non lacinia. Donec eu metus id erat dapibus placerat.
-
-                        Cras iaculis odio scelerisque dolor bibendum, vitae efficitur diam luctus. Maecenas lacinia aliquam tristique. Quisque condimentum, diam id tempus facilisis, mauris lorem egestas tortor, a tincidunt lacus tortor molestie odio. Nulla ex mauris, pellentesque quis efficitur maximus, aliquet ac arcu. Integer ac mollis eros, quis accumsan tortor. Aliquam efficitur suscipit fringilla. Vivamus pulvinar risus in ligula molestie sagittis. Praesent sit amet metus a mi ullamcorper mollis ut vestibulum lectus. Nunc sit amet erat at nunc tempus viverra. Nunc gravida id odio in vehicula. Nunc efficitur maximus consequat. In condimentum tellus ut urna congue auctor id vel turpis. Mauris congue egestas ipsum non bibendum.
-
-                        Nullam accumsan dignissim risus a fermentum. Donec condimentum dui eros, quis posuere elit scelerisque ut. In pulvinar arcu vel purus suscipit iaculis et non felis. Nulla venenatis urna sed dolor vulputate scelerisque. Suspendisse ullamcorper a mauris quis gravida. Phasellus ultrices mi magna, sit amet pellentesque tortor tempor sed. Fusce a ex nec massa malesuada rutrum. Etiam sed lacus diam. Vestibulum ut libero imperdiet dolor pulvinar semper nec sed mi. Sed vel orci vitae ante gravida pulvinar ac facilisis ex. In sit amet est tristique, vehicula justo at, venenatis augue. Maecenas ante ipsum, placerat tristique ultricies sit amet, pulvinar accumsan urna.
-
-                        Nam a arcu nunc. Morbi non tempor neque. Proin sit amet pulvinar risus. Curabitur iaculis libero non enim consequat, eget porta est vestibulum. Nam nibh est, fermentum eget tellus sed, venenatis elementum odio. Etiam ex tortor, convallis scelerisque magna aliquet, commodo pharetra metus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla eu molestie purus. Sed dictum sapien id sem iaculis bibendum.orbi non tempor neque. Proin sit amet pulvinar risus. Curabitur iaculis libero non enim consequat, eget porta est vestibulum. Nam nibh est, fermentum eget tellus sed, venenatis elementum odio. Etiam ex tortor, convallis scelerisque magna aliquet, commodo pharetra metus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla eu molestie purus. Sed dictum sapien id sem iaculis bibendum.</p>
-
+                    <p className="presentationSite">Presentation du site</p>
                 )}
             </div>,
             <footer class="site-footer">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
-                            <h6>About</h6>
                             <p class="text-justify">MyLOL.GG is a simple way to check your champion mastery progress and help you decide what champion you should go for.</p>
                         </div>
                     </div>
@@ -142,16 +124,9 @@ class SummonerForm extends Component {
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8 col-sm-6 col-xs-12">
-                            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-                                <a href="https://github.com/VivienFreb" target="_blank">VFreb</a>.
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <p class="copyright-text"> &copy; 2020 MyLOL.GG. MyLOL.GG isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
                             </p>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <ul class="social-icons">
-                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
