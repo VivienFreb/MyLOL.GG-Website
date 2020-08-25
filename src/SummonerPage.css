@@ -87,3 +87,9 @@ table.table-hover{
 .bootstrap-table .fixed-table-container.fixed-height:not(.has-footer) {
     border: none!important;
 }
+
+.float-left.search.btn-group {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    width:100% !important;
+}

@@ -19,7 +19,7 @@
 
 .summonerContent{
     background: url("./assets/background/yone.jpg") no-repeat center center fixed;
-    height: 95vh;
+    height: 80%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -28,6 +28,6 @@
 
 /* Navbar */
 .navbar{
-    height: 5vh;
+    height: auto;
     background-color: rgba(111, 12, 196, 0.5);
 }

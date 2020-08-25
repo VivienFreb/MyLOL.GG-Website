@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import brand from "./brand.png"
 import ApiRequest from "./ApiRequest";
 
 import './SummonerForm.css'
@@ -49,6 +50,15 @@ class SummonerForm extends Component {
         const { summoner, region, isValid } = this.state;
         return [
             <nav className="navbar sticky-top navbar-light bg-light">
+                <a className="navbar-brand" href="#">
+                    <img src={brand} height="35"
+                         className="d-inline-block align-top" alt=""/>
+                </a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
                 <form className="search-form form-inline needs-validation" noValidate onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <input
@@ -68,7 +78,7 @@ class SummonerForm extends Component {
                     </div>
                     <div className="form-group">
                         <select
-                            className="custom-select"
+                            className="custom-select mr-sm-2"
                             id="region"
                             onChange={this.handleChange}
                         >
@@ -77,7 +87,7 @@ class SummonerForm extends Component {
                             ))}
                         </select>
                     </div>
-                    <input type="submit" value="Submit" onClick={this.newSearch}/>
+                    <input className="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit" onClick={this.newSearch}/>
                 </form>
 
             </nav>,
