@@ -22,7 +22,7 @@ class SummonerPage extends Component{
     getImage(champion){
         const champions = this.state.champions;
         var result = champions.find(ele => ele.value === champion.toString());
-        return "http://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/" + result.clef + ".png"
+        return "https://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/" + result.clef + ".png"
     }
 
     numberWithCommas(x) {
@@ -55,8 +55,8 @@ class SummonerPage extends Component{
                     </div>
                     <p className="summonerName">{summoner.name}</p>
                     <div className="mobileInfo">
-                        <p className="summonerName">{summoner.name}</p>
-                        <p className="summonerName">{"Level " + summoner.summonerLevel}</p>
+                        <p className="summonerInfoMobile">{summoner.name}</p>
+                        <p className="summonerInfoMobile">{"Level " + summoner.summonerLevel}</p>
                     </div>
                 </div>
                 <div className="content">

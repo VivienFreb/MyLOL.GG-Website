@@ -66,9 +66,18 @@
 /* -- Mobile Info --*/
 .mobileInfo{
     display:none;
-    height: 120px;
+    height: 100px;
     float: right;
     padding: 10px;
+}
+
+
+.summonerInfoMobile{
+    margin-bottom: 10px;
+    font-family: 'Rowdies', cursive;
+    font-size: 140%;
+    text-align: right;
+    color: #F0E6D2;
 }
 
 

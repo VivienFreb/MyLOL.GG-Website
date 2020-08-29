@@ -2,19 +2,27 @@
     /* --- Summoner Info Sidebar --- */
     .sidebar {
         position: static;
-        height: auto;
+        height: 100px;
         padding-top: 0;
     }
 
     .iconContainer{
-        width: 110px;
-        height: 110px;
-        margin: 5px 0;
+        width: 100px;
+        height: 100px;
+        margin: 0;
         float: left;
+    }
+
+    .levelBorder{
+        display:none;
     }
 
     .profileIcon{
         top: 25px;
+        border-radius: 0%;
+        width: 100px;
+        height: 100px;
+        position: static;
     }
 
     .summonerLevel{
@@ -23,9 +31,6 @@
 
     .sidebar > .summonerName{
         display:none;
-        /*position: absolute;*/
-        /*top: 70px;*/
-        /*right: 10px;*/
     }
 
     .mobileInfo{
