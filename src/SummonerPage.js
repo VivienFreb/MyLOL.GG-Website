@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import moment from 'moment'
 
 import './SummonerPage.css'
+import './SummonerPageResponsive.css'
 
 import { getLevelBorder, getMasteryLevel } from "./ImagesImport";
 
@@ -53,6 +54,10 @@ class SummonerPage extends Component{
                         <div className="summonerLevel">{summoner.summonerLevel}</div>
                     </div>
                     <p className="summonerName">{summoner.name}</p>
+                    <div className="mobileInfo">
+                        <p className="summonerName">{summoner.name}</p>
+                        <p className="summonerName">{"Level " + summoner.summonerLevel}</p>
+                    </div>
                 </div>
                 <div className="content">
                     <table data-toggle="table"

@@ -54,11 +54,11 @@ body{
 .site-footer
 {
     background: rgba(25, 25, 25, 0.7);
-    padding: 10px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    font-size: 12px;
+    padding: 5px;
+    font-size: 11.5px;
     line-height: 24px;
     color: #737373;
 }
@@ -71,6 +71,7 @@ body{
 {
     margin:20px 0
 }
+
 .copyright-text
 {
     margin:0

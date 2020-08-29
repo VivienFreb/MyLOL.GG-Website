@@ -63,6 +63,15 @@
     line-height: 50px;
 }
 
+/* -- Mobile Info --*/
+.mobileInfo{
+    display:none;
+    height: 120px;
+    float: right;
+    padding: 10px;
+}
+
+
 /* [Table] */
 .avatar img{
     height: 50px;

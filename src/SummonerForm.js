@@ -47,13 +47,6 @@ class SummonerForm extends Component {
     };
 
     componentDidMount() {
-        const jQuery = document.createElement('script');
-        jQuery.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-
-        document.body.appendChild(jQuery)
-        const bootstrap = document.createElement('script');
-        bootstrap.src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        document.body.appendChild(bootstrap);
 
     }
 
@@ -110,26 +103,24 @@ class SummonerForm extends Component {
                 {isValid ? (
                     <ApiRequest summoner={summoner} region={region} />
                 ) : (
-                    <p className="presentationSite">Presentation du site</p>
+                    <p className="presentationSite">MyLOL.GG is a simple way to check your champion mastery progress and help you decide what champion you should go for.</p>
                 )}
             </div>,
+
             <footer class="site-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12">
-                            <p class="text-justify">MyLOL.GG is a simple way to check your champion mastery progress and help you decide what champion you should go for.</p>
-                        </div>
-                    </div>
-                    <hr/>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <p class="copyright-text"> &copy; 2020 MyLOL.GG. MyLOL.GG isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+                {!isValid &&
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 col-sm-12 col-xs-12">
+                            <p className="copyright-text"> &copy; 2020 MyLOL.GG. MyLOL.GG isn’t endorsed by Riot Games
+                                and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in
+                                producing or managing League of Legends. League of Legends and Riot Games are trademarks
+                                or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
                             </p>
                         </div>
                     </div>
                 </div>
+                }
             </footer>
 
         ];
