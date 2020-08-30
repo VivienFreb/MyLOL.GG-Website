@@ -32,9 +32,7 @@ class SummonerForm extends Component {
     };
 
     handleSubmit = (event) => {
-        this.setState({isValid: false});
         event.preventDefault();
-        event.target.className += " was-validated";
         if(event.target.checkValidity()){
             this.setState({isValid: true})
         }
@@ -54,17 +52,17 @@ class SummonerForm extends Component {
         const { summoner, region, isValid } = this.state;
         return [
             <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between sticky-top">
-                <a className="navbar-brand" href="#">
+                <div className="navbar-brand" href="#">
                     <img src={brand}
                          height="35"
                          className="d-inline-block align-top"
                          alt="Logo MyLOL.GG"
                          onClick={this.newSearch}/>
-                </a>
+                </div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"/>
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -95,19 +93,19 @@ class SummonerForm extends Component {
                             </select>
                         </div>
 
-                        <button className="btn btn-outline-purple my-2 my-sm-0" type="submit">Search</button>
+                        <button className="btn btn-outline-purple my-2 my-sm-0" type="submit" onClick={this.newSearch}>Search</button>
                     </form>
                 </div>
             </nav>,
-            <div class="summonerContent">
+            <div className="summonerContent">
                 {isValid ? (
                     <ApiRequest summoner={summoner} region={region} />
                 ) : (
-                    <p className="presentationSite">MyLOL.GG is a simple way to check your champion mastery progress and help you decide what champion you should go for.</p>
+                    <p className="presentationSite summonerName">MyLOL.GG is a simple way to check your champion mastery progress and help you decide what champion you should go for.</p>
                 )}
             </div>,
 
-            <footer class="site-footer">
+            <footer className="site-footer">
                 {!isValid &&
                 <div className="container">
                     <div className="row">

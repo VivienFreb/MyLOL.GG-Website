@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import SummonerPage from "./SummonerPage";
 
-const CORS = "https://cors-anywhere.herokuapp.com/https://";
+// const CORS = "https://cors-anywhere.herokuapp.com/https://";
 const SUMMONER_QUERY = ".api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 const MASTERY_QUERY = ".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 const CHAMP_QUERY = "https://ddragon.leagueoflegends.com/cdn/10.16.1/data/en_US/champion.json";
@@ -25,7 +25,7 @@ class ApiRequest extends Component {
     apiCall(){
         const datas = [];
         var summonerId = '';
-        axios.get(CORS + this.props.region + SUMMONER_QUERY + this.props.summoner + API_KEY)
+        axios.get("https://" + this.props.region + SUMMONER_QUERY + this.props.summoner + API_KEY)
         //
             .then(
                 (res) => {
@@ -39,7 +39,7 @@ class ApiRequest extends Component {
                     });
                 })
 
-            .then(() => axios.get(CORS + this.props.region + MASTERY_QUERY + summonerId + API_KEY)
+            .then(() => axios.get("https://" + this.props.region + MASTERY_QUERY + summonerId + API_KEY)
                 .then(
                     (res) => {
                         datas.push(res.data)

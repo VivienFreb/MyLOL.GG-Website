@@ -1,4 +1,29 @@
-@media (max-width: 991px){
+@media (max-width: 991px) {
+    .iconContainer {
+        width: 150px;
+        height: 150px;
+        margin-top: 50px;
+    }
+
+    .profileIcon {
+        top: 33px;
+    }
+
+    .summonerLevel {
+        left: 51px;
+        bottom: 5px;
+    }
+
+    .summonerName {
+        font-size: 110%;
+    }
+
+    .content {
+        margin-left: 150px;
+    }
+}
+
+@media (max-width: 575px){
     /* --- Summoner Info Sidebar --- */
     .sidebar {
         position: static;
@@ -48,9 +73,12 @@
     }
 }
 
+
 @media (max-width: 450px){
     /* --- Search Form --- */
     .search-form #summoner{
         width: auto!important;
     }
+
+
 }

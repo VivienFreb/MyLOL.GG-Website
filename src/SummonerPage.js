@@ -49,8 +49,8 @@ class SummonerPage extends Component{
             <div className="summonerPage">
                 <div className="sidebar">
                     <div className="iconContainer">
-                        <img className="profileIcon" src={"https://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summoner.profileIconId + ".png"}/>
-                        <img className="levelBorder" src={getLevelBorder(summoner.summonerLevel)}/>
+                        <img className="profileIcon" src={"https://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summoner.profileIconId + ".png"} alt={"Summoner Icon"}/>
+                        <img className="levelBorder" src={getLevelBorder(summoner.summonerLevel)} alt={"Level border"}/>
                         <div className="summonerLevel">{summoner.summonerLevel}</div>
                     </div>
                     <p className="summonerName">{summoner.name}</p>
