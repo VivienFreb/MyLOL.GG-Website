@@ -1,32 +1,42 @@
-
 ## Description
+Projet d'un outil permettant de rechercher facilement ses points de maîtrise sur le jeu **_League Of Legends_**. en entrant un nom d'invocateur.<br/>
+Projet effectué durant mon apprentissage de la bibliothèque JavaScript **React** en utilisant également **Bootstrap** et **Bootstrap Table** principalement.
 
-Résultat en fonction de la recherche. <br/>
+### Page d'accueil du site
+![Page d'accueil du site](https://puu.sh/Gobao/43733b5a14.jpg)
 
-Affichage :
-* Nom d'invocateur
-* Icône
-* Niveau
-* Cadre de niveau
+Présentation du site, possibilité de faire une recherche via le formulaire présent dans la barre de navigation <br/>
 
-![Search result](https://puu.sh/GhmjK/2eaf9cf90f.png)
+### Résultat d'une recherche. 
+![Résultat d'une recherche](https://puu.sh/Gobii/2956abbb90.png)
+Affichage de plusieurs éléments concernant le joueur.
 
-#### New 17/08/20
+**Informations du compte :**
+<ul>
+<li>Nom d'invocateur</li>
+<li>Icône</li>
+<li>Niveau</li>
+<li>Cadre de niveau</li>
+</ul>
 
-Ajout des masteries <br/>
+**Niveau de maîtrise des champions du joueur :**
+<ul>
+<li>Icône du personnage</li>
+<li>Nom</li>
+<li>Niveau de maitrise</li>
+<li>Total de points de maitrise</li>
+<li>Dernière fois que le personnage a été joué (actuellement en UNIX)</li>
+<li>Points gagnés depuis le dernier niveau</li>
+<li>Points nécessaires pour le prochain niveau</li>
+<li>Coffre disponible ou non</li>
+<li>Nombre de tokens gagnés sur le champion</li>
+</ul>
 
-Affichage :
-* Icône du personnage
-* Nom
-* Niveau de maitrise
-* Total de points de maitrise
-* Dernière fois que le personnage a été joué (actuellement en UNIX)
-* Points gagnés depuis le dernier niveau
-* Points nécessaires pour le prochain niveau
-* Coffre disponible ou non
-* Nombre de tokens gagnés sur le champion
+### Site responsive
+L'objectif est également que le site soit accessible sur n'importe quel support. <br/>
+Cette tâche n'est pas finie et est encore en cours d'amélioration.
 
-![Search result](https://puu.sh/GhBdc/3708441c3c.png)
+![Responive Telephone](https://puu.sh/GobjV/9802a45b20.png)
 
 ## Installation
 ### `npm install`
