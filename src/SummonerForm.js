@@ -101,7 +101,7 @@ class SummonerForm extends Component {
                 {isValid ? (
                     <ApiRequest summoner={summoner} region={region} />
                 ) : (
-                    <p className="presentationSite summonerName">MyLOL.GG is a simple way to check your champion mastery progress and help you decide what champion you should go for.</p>
+                    <p className="presentationSite">MyLOL.GG is a simple way to check your champion mastery progress and help you decide what champion you should go for.</p>
                 )}
             </div>,
 

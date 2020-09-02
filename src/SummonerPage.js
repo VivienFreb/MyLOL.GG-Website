@@ -66,7 +66,7 @@ class SummonerPage extends Component{
                            data-sort-order="desc"
                            data-search="true"
                            data-search-align="left"
-                           data-height="600"
+                           data-height="800"
                            data-thead-classes="thead-dark"
                            className="masteries table table-striped">
                         <thead>

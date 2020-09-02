@@ -21,6 +21,14 @@
     .content {
         margin-left: 150px;
     }
+
+    .avatar span{
+        display:none;
+    }
+
+    .avatar img {
+        height: 35px;
+    }
 }
 
 @media (max-width: 575px){

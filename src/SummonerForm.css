@@ -1,3 +1,23 @@
+/* Home */
+.presentationSite {
+    margin: auto;
+    width: 50%;
+    border: 1px solid #8764bd;
+    background-color: rgba(15,15,15,0.7);
+    padding: 20px;
+
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Rowdies', cursive;
+    font-size: 170%;
+    text-align: center;
+    color: #F0E6D2;
+}
+
+
 .search-form{
     float: right;
 }
