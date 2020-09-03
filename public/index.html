@@ -47,6 +47,14 @@
         let bb = b.replace(',', '');
         return aa - bb
       }
+
+      function datesSorter(a, b) {
+          // '03/09/2020'.split('/')
+          // -> ["03","09","2020"]
+          a = a.toString().split('/');
+          b = b.toString().split('/');
+          return a[2] - b[2] || a[1] - b[1] || a[0] - b[0];
+      }
     </script>
   </body>
 </html>

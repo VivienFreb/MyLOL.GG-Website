@@ -11,17 +11,17 @@ class SummonerPage extends Component{
         summoner: this.props.res[0],
         mastery: this.props.res[1],
         champions: this.props.res[2]
-    }
+    };
 
     getChampionNameById = (championId) =>{
         const champions = this.state.champions;
-        var result = champions.find(ele => ele.value === championId.toString());
+        let result = champions.find(ele => ele.value === championId.toString());
         return result.name;
-    }
+    };
 
     getImage(champion){
         const champions = this.state.champions;
-        var result = champions.find(ele => ele.value === champion.toString());
+        let result = champions.find(ele => ele.value === champion.toString());
         return "https://ddragon.leagueoflegends.com/cdn/10.16.1/img/champion/" + result.clef + ".png"
     }
 
@@ -30,16 +30,16 @@ class SummonerPage extends Component{
     }
 
     unixConvert(unix){
-        var workingUnix = unix.toString().slice(0, -3);
+        let workingUnix = unix.toString().slice(0, -3);
         return moment.unix(workingUnix).format("DD/MM/YYYY")
     }
 
     componentDidMount() {
         const popper = document.createElement('script');
         const bootstraptable = document.createElement('script');
-        popper.src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        bootstraptable.src = "https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"
-        document.body.appendChild(popper)
+        popper.src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js";
+        bootstraptable.src = "https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js";
+        document.body.appendChild(popper);
         document.body.appendChild(bootstraptable)
     }
 
@@ -74,7 +74,7 @@ class SummonerPage extends Component{
                             <th data-sortable="true" className="champion">Champion</th>
                             <th data-field="level" data-sortable="true" className="level">Level</th>
                             <th data-sortable="true" data-sorter="pointsSorter" className="mastery">Mastery Points</th>
-                            <th data-sortable="true" className="played">Last Time Played</th>
+                            <th data-sortable="true" data-sorter="datesSorter" className="played">Last Time Played</th>
                             <th data-sortable="true" className="pointsNext">Points for next level</th>
                             <th data-sortable="true" className="chest">Chest</th>
                             <th data-sortable="true" className="tokens">Tokens Earned</th>
