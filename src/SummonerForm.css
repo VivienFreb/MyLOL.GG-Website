@@ -39,8 +39,6 @@
 body{
     background: url("./assets/background/yone.jpg") no-repeat center center fixed;
     height: 100%;
-    max-height: 100vh;
-    overflow-y: hidden;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
