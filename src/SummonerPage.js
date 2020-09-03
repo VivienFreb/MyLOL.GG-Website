@@ -73,10 +73,10 @@ class SummonerPage extends Component{
                             <th  data-searchable="false" className="avatar"> </th>
                             <th data-sortable="true" className="champion">Champion</th>
                             <th data-field="level" data-sortable="true" className="level">Level</th>
-                            <th data-sortable="true" className="mastery">Mastery Points</th>
+                            <th data-sortable="true" data-sorter="pointsSorter" className="mastery">Mastery Points</th>
                             <th data-sortable="true" className="played">Last Time Played</th>
                             <th data-sortable="true" className="pointsNext">Points for next level</th>
-                            <th data-sortable="true" className="chest">Chest ?</th>
+                            <th data-sortable="true" className="chest">Chest</th>
                             <th data-sortable="true" className="tokens">Tokens Earned</th>
                         </tr>
                         </thead>
@@ -91,7 +91,7 @@ class SummonerPage extends Component{
                                     {champion.championLevel}
 
                                 </th>
-                                <th className="mastery">{champion.championPoints}</th>
+                                <th className="mastery">{this.numberWithCommas(champion.championPoints)}</th>
                                 <th className="played">{this.unixConvert(champion.lastPlayTime)}</th>
                                 <th className="pointsNext">{(champion.championPointsUntilNextLevel === 0) ? 'Mastered' : champion.championPointsUntilNextLevel}</th>
                                 <th className="chest">{champion.chestGranted ? 'Granted' : 'Available'}</th>
