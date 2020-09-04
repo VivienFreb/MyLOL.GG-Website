@@ -98,10 +98,22 @@ table.table-hover{
     display: table!important;
 }
 
+.masteries thead tr {
+    background-color: #343a40;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.masteries thead .header th {
+    padding: 12px;
+    font-weight: bold;
+}
+
 .masteries th, .masteries td {
-     padding: 0.25rem;
-     vertical-align: middle;
+    padding: 0.25rem;
+    vertical-align: middle;
     border: none;
+    font-weight: normal;
 }
 
 /* [Bootstrap Table] */
