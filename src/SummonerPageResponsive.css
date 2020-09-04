@@ -22,6 +22,10 @@
         margin-left: 150px;
     }
 
+    .avatar {
+        min-width: 0;
+    }
+
     .avatar span{
         display:none;
     }
@@ -78,6 +82,14 @@
 
     .avatar{
         display: none;
+    }
+
+    .masteries thead tr {
+        font-size: 12px;
+    }
+
+    .masteries .th-inner{
+        padding: 0.35rem!important;
     }
 }
 

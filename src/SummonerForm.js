@@ -4,6 +4,7 @@ import brand from "./brand.png"
 import ApiRequest from "./ApiRequest";
 
 import './SummonerForm.css'
+import './SummonerFormResponsive.css'
 
 const REGIONS = [
     {region:'EUW', val: "EUW1"},

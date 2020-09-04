@@ -1,0 +1,24 @@
+@media (max-width: 991px) {
+    .presentationSite{
+        width: 75%;
+        padding: 15px;
+        font-size: 25px;
+    }
+}
+
+@media (max-width:767px)
+{
+    .site-footer
+    {
+        padding-bottom:0
+    }
+}
+
+@media (max-width: 575px) {
+    .presentationSite{
+        width: 90%;
+        padding: 10px;
+        font-size: 22px;
+        text-align: center;
+    }
+}
