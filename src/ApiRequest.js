@@ -7,7 +7,7 @@ const CORS = "https://mylolgg-proxy.herokuapp.com/";
 const SUMMONER_QUERY = ".api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 const MASTERY_QUERY = ".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 const CHAMP_QUERY = "https://ddragon.leagueoflegends.com/cdn/10.16.1/data/en_US/champion.json";
-// const API_KEY = "?api_key=" + process.env.RIOT_KEY;
+const API_KEY = "?api_key=" + process.env.REACT_APP_RIOT_API_KEY;
 
 
 class ApiRequest extends Component {
@@ -25,7 +25,7 @@ class ApiRequest extends Component {
     apiCall(){
         const datas = [];
         var summonerId = '';
-        axios.get(CORS + "https://" + this.props.region + SUMMONER_QUERY + this.props.summoner + "?api_key=" + process.env.RIOT_KEY)
+        axios.get(CORS + "https://" + this.props.region + SUMMONER_QUERY + this.props.summoner + API_KEY)
             .then(
                 (res) => {
                     summonerId = res.data.id;
@@ -38,7 +38,7 @@ class ApiRequest extends Component {
                     });
                 })
 
-            .then(() => axios.get(CORS + "https://" + this.props.region + MASTERY_QUERY + summonerId + "?api_key=" + process.env.RIOT_KEY)
+            .then(() => axios.get(CORS + "https://" + this.props.region + MASTERY_QUERY + summonerId + API_KEY)
                 .then(
                     (res) => {
                         datas.push(res.data)
