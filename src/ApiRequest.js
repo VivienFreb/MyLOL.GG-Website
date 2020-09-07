@@ -25,7 +25,7 @@ class ApiRequest extends Component {
     apiCall(){
         const datas = [];
         var summonerId = '';
-        axios.get(CORS + "https://" + this.props.region + SUMMONER_QUERY + this.props.summoner + API_KEY)
+        axios.get("https://" + this.props.region + SUMMONER_QUERY + this.props.summoner + API_KEY)
             .then(
                 (res) => {
                     summonerId = res.data.id;
@@ -38,7 +38,7 @@ class ApiRequest extends Component {
                     });
                 })
 
-            .then(() => axios.get(CORS + "https://" + this.props.region + MASTERY_QUERY + summonerId + API_KEY)
+            .then(() => axios.get("https://" + this.props.region + MASTERY_QUERY + summonerId + API_KEY)
                 .then(
                     (res) => {
                         datas.push(res.data)
